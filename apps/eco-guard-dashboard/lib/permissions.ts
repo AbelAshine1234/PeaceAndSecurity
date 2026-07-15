@@ -1,0 +1,154 @@
+import { UserRole } from "./auth";
+export const PERMISSIONS = {
+    // Report Management
+    REPORT_VIEW: "REPORT_VIEW",
+    REPORT_CREATE: "REPORT_CREATE",
+    REPORT_UPDATE: "REPORT_UPDATE",
+    REPORT_DELETE: "REPORT_DELETE",
+    REPORT_ASSIGN: "REPORT_ASSIGN",
+    REPORT_RESOLVE: "REPORT_RESOLVE",
+
+    // Violation Management
+    VIOLATION_VIEW: "VIOLATION_VIEW",
+    VIOLATION_CREATE: "VIOLATION_CREATE",
+    VIOLATION_UPDATE: "VIOLATION_UPDATE",
+    VIOLATION_DELETE: "VIOLATION_DELETE",
+
+    // Camera Management
+    CAMERA_VIEW: "CAMERA_VIEW",
+    CAMERA_CREATE: "CAMERA_CREATE",
+    CAMERA_UPDATE: "CAMERA_UPDATE",
+    CAMERA_DELETE: "CAMERA_DELETE",
+
+    // User Management (Admin, Patrol, Citizen)
+    USER_VIEW: "USER_VIEW",
+    USER_CREATE: "USER_CREATE",
+    USER_UPDATE: "USER_UPDATE",
+    USER_DELETE: "USER_DELETE",
+    USER_DISABLE: "USER_DISABLE",
+    USER_ENABLE: "USER_ENABLE",
+
+    // Configuration Management
+    CONFIGURATION_VIEW: "CONFIGURATION_VIEW",
+    CONFIGURATION_CREATE: "CONFIGURATION_CREATE",
+    CONFIGURATION_UPDATE: "CONFIGURATION_UPDATE",
+    CONFIGURATION_DELETE: "CONFIGURATION_DELETE",
+
+    // Dashboard & Analytics
+    DASHBOARD_VIEW: "DASHBOARD_VIEW",
+    DASHBOARD_STATS: "DASHBOARD_STATS",
+
+    // Settings & Security
+    SETTINGS_VIEW: "SETTINGS_VIEW",
+    SETTINGS_UPDATE: "SETTINGS_UPDATE",
+    SETTINGS_RESET_PASSWORD: "SETTINGS_RESET_PASSWORD",
+    SETTINGS_CHANGE_PASSWORD: "SETTINGS_CHANGE_PASSWORD",
+};
+
+export const PERMISSION_LABELS: Record<string, string> = {
+    // Report
+    [PERMISSIONS.REPORT_VIEW]: "View Report",
+    [PERMISSIONS.REPORT_CREATE]: "Create Report",
+    [PERMISSIONS.REPORT_UPDATE]: "Update Report",
+    [PERMISSIONS.REPORT_DELETE]: "Delete Report",
+    [PERMISSIONS.REPORT_ASSIGN]: "Assign Report",
+    [PERMISSIONS.REPORT_RESOLVE]: "Resolve Report",
+
+    // Violation
+    [PERMISSIONS.VIOLATION_VIEW]: "View Violation",
+    [PERMISSIONS.VIOLATION_CREATE]: "Create Violation",
+    [PERMISSIONS.VIOLATION_UPDATE]: "Update Violation",
+    [PERMISSIONS.VIOLATION_DELETE]: "Delete Violation",
+
+    // Camera
+    [PERMISSIONS.CAMERA_VIEW]: "View Camera",
+    [PERMISSIONS.CAMERA_CREATE]: "Create Camera",
+    [PERMISSIONS.CAMERA_UPDATE]: "Update Camera",
+    [PERMISSIONS.CAMERA_DELETE]: "Delete Camera",
+
+    // User
+    [PERMISSIONS.USER_VIEW]: "View User",
+    [PERMISSIONS.USER_CREATE]: "Create User",
+    [PERMISSIONS.USER_UPDATE]: "Update User",
+    [PERMISSIONS.USER_DELETE]: "Delete User",
+    [PERMISSIONS.USER_DISABLE]: "Disable User",
+    [PERMISSIONS.USER_ENABLE]: "Enable User",
+
+    // Configuration
+    [PERMISSIONS.CONFIGURATION_VIEW]: "View Config",
+    [PERMISSIONS.CONFIGURATION_CREATE]: "Create Config",
+    [PERMISSIONS.CONFIGURATION_UPDATE]: "Update Config",
+    [PERMISSIONS.CONFIGURATION_DELETE]: "Delete Config",
+
+    // Dashboard
+    [PERMISSIONS.DASHBOARD_VIEW]: "View Dashboard",
+    [PERMISSIONS.DASHBOARD_STATS]: "View Stats",
+
+    // Settings
+    [PERMISSIONS.SETTINGS_VIEW]: "View Setting",
+    [PERMISSIONS.SETTINGS_UPDATE]: "Update Setting",
+    [PERMISSIONS.SETTINGS_RESET_PASSWORD]: "Reset Password",
+    [PERMISSIONS.SETTINGS_CHANGE_PASSWORD]: "Change Password",
+};
+
+// Categorized permissions for better UI
+export const PERMISSION_CATEGORIES = {
+    "Report Management": [
+        PERMISSIONS.REPORT_VIEW,
+        PERMISSIONS.REPORT_CREATE,
+        PERMISSIONS.REPORT_UPDATE,
+        PERMISSIONS.REPORT_DELETE,
+        PERMISSIONS.REPORT_ASSIGN,
+        PERMISSIONS.REPORT_RESOLVE,
+    ],
+    "Violation Management": [
+        PERMISSIONS.VIOLATION_VIEW,
+        PERMISSIONS.VIOLATION_CREATE,
+        PERMISSIONS.VIOLATION_UPDATE,
+        PERMISSIONS.VIOLATION_DELETE,
+    ],
+    "Camera Management": [
+        PERMISSIONS.CAMERA_VIEW,
+        PERMISSIONS.CAMERA_CREATE,
+        PERMISSIONS.CAMERA_UPDATE,
+        PERMISSIONS.CAMERA_DELETE,
+    ],
+    "User Management": [
+        PERMISSIONS.USER_VIEW,
+        PERMISSIONS.USER_CREATE,
+        PERMISSIONS.USER_UPDATE,
+        PERMISSIONS.USER_DELETE,
+        PERMISSIONS.USER_DISABLE,
+        PERMISSIONS.USER_ENABLE,
+    ],
+    "Dashboard & Analytics": [
+        PERMISSIONS.DASHBOARD_VIEW,
+        PERMISSIONS.DASHBOARD_STATS,
+    ],
+    "System Settings": [
+        PERMISSIONS.SETTINGS_VIEW,
+        PERMISSIONS.SETTINGS_UPDATE,
+        PERMISSIONS.SETTINGS_CHANGE_PASSWORD,
+    ],
+};
+
+
+export const DEFAULT_PERMISSIONS_BY_ROLE: Record<string, string[]> = {
+    [UserRole.SYSTEM_SUPER_ADMIN]: [
+        ...Object.values(PERMISSIONS),
+    ],
+    [UserRole.SYSTEM_ADMIN]: [
+        ...Object.values(PERMISSIONS),
+    ],
+    [UserRole.PATROL]: [
+        PERMISSIONS.REPORT_VIEW,
+        PERMISSIONS.REPORT_RESOLVE,
+        PERMISSIONS.DASHBOARD_VIEW,
+        PERMISSIONS.SETTINGS_CHANGE_PASSWORD,
+    ],
+    [UserRole.CITIZEN]: [
+        // Citizens use the mobile app. If they ever access the dashboard they can only view their own reports.
+        PERMISSIONS.REPORT_CREATE,
+        PERMISSIONS.REPORT_VIEW,
+    ]
+};
