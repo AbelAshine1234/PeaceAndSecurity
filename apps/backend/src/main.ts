@@ -55,9 +55,9 @@ async function bootstrap() {
 
   // Setup Swagger
   const config = new DocumentBuilder()
-    .setTitle("EcoGuard Backend API")
+    .setTitle("Peace and Security Backend API")
     .setDescription(
-      "Complete API documentation for EcoGuard Backend\n\n" +
+      "Complete API documentation for Peace and Security Backend\n\n" +
       `**Base URL**: ${backendUrl}\n`,
     )
     .setVersion("1.0")

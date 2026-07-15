@@ -9,7 +9,7 @@ async function testRemote() {
         // 1. Admin Login
         console.log('--- [Admin Login] ---');
         const loginRes = await axios.post(`${BASE_URL}/auth/user/login`, {
-            email: 'superadmin@ecoguard.com',
+            email: 'superadmin@peaceandsecurity.com',
             password: 'Password123!'
         });
         console.log('Login Response:', JSON.stringify(loginRes.data, null, 2));

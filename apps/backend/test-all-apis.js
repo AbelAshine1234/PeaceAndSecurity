@@ -1,5 +1,5 @@
 /**
- * EcoGuard — Comprehensive API Test Suite
+ * Peace and Security — Comprehensive API Test Suite
  * Tests: Auth (User/Patrol/Citizen), CRUD, Guest & Registered Reports,
  *        Notifications (FCM token registration + counts), Patrol flow
  *
@@ -91,7 +91,7 @@ async function runAdminAuth() {
 
     const r = await test("POST /auth/user/login → admin", async () => {
         const res = await req("post", "/auth/user/login", {
-            email: "superadmin@ecoguard.com",
+            email: "superadmin@peaceandsecurity.com",
             password: "Password123!",
         });
         S.adminToken = res.data?.data?.accessToken || res.data?.accessToken;
@@ -189,7 +189,7 @@ async function runUserTests() {
         if (!S.adminToken) throw new Error("No admin token");
         const fd = new FormData();
         fd.append("fullName", "Test Admin " + RUN_ID);
-        fd.append("email", `testadmin${RUN_ID}@ecoguard.com`);
+        fd.append("email", `testadmin${RUN_ID}@peaceandsecurity.com`);
         fd.append("phoneNumber", `+251933${RUN_ID}`);
         fd.append("role", "SYSTEM_ADMIN");
         fd.append("isStaffUser", "true");
@@ -589,7 +589,7 @@ async function runCleanup() {
 //  MAIN
 // ═════════════════════════════════════════════════════════════════════════════
 async function main() {
-    console.log(c.bold(`\n🌿  EcoGuard — Full API Test Suite`));
+    console.log(c.bold(`\n🌿  Peace and Security — Full API Test Suite`));
     console.log(`    Base URL : ${c.cyan(BASE_URL)}`);
     console.log(`    Run ID   : ${RUN_ID}`);
     console.log(`    Patrol ☎ : ${PHONE_P}`);

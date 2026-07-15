@@ -7,7 +7,7 @@ const DB_CONFIG = {
     port: 5432,
     user: 'postgres',
     password: 'postgres',
-    database: 'eco-guard',
+    database: 'peace_and_security',
 };
 
 async function reset() {
