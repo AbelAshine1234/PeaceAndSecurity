@@ -1,0 +1,69 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+**/ios/Flutter/.last_build_id
+**/doc/api/
+*.class
+*.log
+*.pyc
+*.swp
+*.swiftpm/
+migrate_working_dir/
+
+# Android build artifacts
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# iOS/Pods
+**/ios/Pods/
+**/ios/Podfile.lock
+
+# Node.js
+node_modules/
+dist/
+coverage/
+*.pid
+*.seed
+lib-cov
+.grunt
+.lock-wscript
+build/Release
+npm-debug.log
+
+# Environment & Secrets
+.env
+.env.*
+*.env
+*.jks
+*.keystore
+key.properties
+
+# Firebase secrets (but not config JSONs needed for builds)
+**/android/app/google-services.json
+**/ios/Runner/GoogleService-Info.plist
+
+# Logs
+logs/
+*.log
+
+# Test files
+test/
+
+# Package lock
+package-lock.json
