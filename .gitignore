@@ -65,5 +65,4 @@ logs/
 # Test files
 test/
 
-# Package lock
-package-lock.json
+
